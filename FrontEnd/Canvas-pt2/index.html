@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas - parte 2</title>
+    <h6> </h6>
+    <div>
+        <table>
+            <tr>
+                <td> </td>
+                <td> <button type="button" onclick="animacao()"> Parar/Iniciar Animação </button> </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td> Velocidade dos elementos <b>(NÃO ARRASTAR, CLICAR NO LUGAR DESEJADO)</b>: </td>
+                <td> <input type="range" id="slider" min="1" max="100" value="10" oninput="atualizarValor()"> </td>
+            </tr>
+        </table>
+    </div>
+    <style type="text/css">
+        canvas {
+            border: 1px solid black;
+        }
+
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas>
+    </canvas>
+    <script src="canvas.js"></script>
+</body>
+</html>
