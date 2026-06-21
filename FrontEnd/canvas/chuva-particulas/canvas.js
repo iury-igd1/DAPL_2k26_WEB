@@ -1,7 +1,7 @@
 /* 
     Desafio - Chuva de Partículas
 
-    A cada movimento do mouse, nascem particulas que "caem" com gravidade, como uma chuva, 
+    A cada movimento do mouse, nascem partículas que "caem" com gravidade, como uma chuva, 
     acompanhando para onde o cursor vai.
     Código formatado utilizando a extensão 'Prettier'.
 */

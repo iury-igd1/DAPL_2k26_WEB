@@ -4,7 +4,7 @@
     Cada jogador controla a gravidade do seu personagem (W/S para o player 1, setas Cima/Baixo para o 
     player 2) e precisa se esquivar de bombas que saem do centro da arena em direções aleatórias. Quem 
     tocar em uma bomba ou nas bordas laterais perde. Pode ser jogado sozinho (modo 1, contra o tempo) ou 
-    com 2 jogadores no mesmo teclado (modo 2, até alguem perder).
+    com 2 jogadores no mesmo teclado (modo 2, até alguém perder).
     Código formatado utilizando a extensão 'Prettier'.
 */
 
