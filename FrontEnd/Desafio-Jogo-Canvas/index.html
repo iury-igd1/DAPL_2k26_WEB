@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Projeto - Jogo Canvas</title>
+        <style type="text/css">
+            body {
+                background-color: #222;
+                color: white;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin-top: 20px;
+            }
+            canvas {
+                background-color: #333;
+                border: 3px solid white;
+                margin: 10px auto;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 16px;
+                margin: 5px;
+                cursor: pointer;
+                background-color: white;
+                border: 1px solid black;
+            }
+            button:hover {
+                background-color: #ddd;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Arena Gravitacional</h1>
+        <p>Desvie das bombas e sobreviva!</p>
+        <p><b>Player 1:</b> W/S (gravidade) e A/D (mover) &nbsp;|&nbsp; <b>Player 2:</b> setas do teclado</p>
+
+        <!-- Menu inicial: aparece antes do jogo começar -->
+        <div id="menuBotoes">
+            <button onclick="escolherModo(1)">1 Player</button>
+            <button onclick="escolherModo(2)">2 Players</button>
+        </div>
+
+        <!-- Só aparece quando o jogo termina -->
+        <div id="menuReiniciar" style="display: none">
+            <button onclick="reiniciar()">Jogar Novamente</button>
+        </div>
+
+        <canvas></canvas>
+        <script src="canvas.js"></script>
+    </body>
+</html>
