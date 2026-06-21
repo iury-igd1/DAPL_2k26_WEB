@@ -1,0 +1,29 @@
+# ===== Node.js =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Variáveis de ambiente / segredos
+.env
+.env.local
+
+# ===== Sistema Operacional =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Editores / IDEs =====
+.vscode/*
+!.vscode/launch.json
+.idea/
+*.swp
+
+# ===== Logs e arquivos temporários =====
+*.log
+*.tmp
+
+# ===== Build / saídas geradas =====
+dist/
+build/
