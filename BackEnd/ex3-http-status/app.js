@@ -10,6 +10,7 @@
     /contato           -> 200 (2xx) Outra rota de sucesso comum
     /redirecionamento  -> 302 (3xx) Redirecionamento (a URL "mudou de lugar")
     /adm               -> 403 (4xx) Proibido: o cliente não tem permissão
+    /manutencao        -> 503 (5xx) Erro do servidor: serviço indisponível
     /jogo              -> 200 servindo o jogo (ou 500 se a leitura falhar)
     qualquer outra URL -> 404 (4xx) Não encontrado, com página HTML customizada
 */
@@ -45,6 +46,11 @@ const server = http.createServer((req, res) => {
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
         res.end('Acesso restrito. Você não deveria estar vendo isso...\n')
         return
+    } else if (req.url === '/manutencao') {
+        res.statusCode = 503 // 503 Service Unavailable
+        res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+        res.end('Serviço temporariamente indisponível. Voltamos já!\n')
+        return
     } else if (req.url === '/jogo') {
         fs.readFile('jogo.html', (err, data) => {
             if (err) {
@@ -59,7 +65,6 @@ const server = http.createServer((req, res) => {
             }
         })
     } else {
-        res.statusCode = 404 // 404 Not Found
         fs.readFile('404.html', (err, data) => {
             if (err) {
                 res.statusCode = 500 // 500 Internal Server Error
@@ -67,7 +72,7 @@ const server = http.createServer((req, res) => {
                 res.end("Falha interna. Erro ao ler o arquivo '404.html'.\n")
                 return
             } else {
-                res.statusCode = 200
+                res.statusCode = 404
                 res.setHeader('Content-Type', 'text/html')
                 res.end(data)
             }
