@@ -5,76 +5,173 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
 
-Repositório com os exercícios e projetos da matéria de **Desenvolvimento de Aplicativos (DAPL)** do curso técnico da **ETE FMC**, cobrindo a trilha de desenvolvimento Web: HTML, JavaScript no navegador (Canvas) e Node.js no back-end.
+Repositório com os exercícios da disciplina de **Desenvolvimento de Aplicativos (DAPL)** do curso técnico da **ETE FMC**.
 
-> ⚠️ Curso em andamento — novos exercícios e projetos serão adicionados ao longo das próximas aulas.
+O projeto reúne atividades de:
+
+- **HTML** para páginas estáticas
+- **Canvas + JavaScript** para animações e jogos
+- **Node.js** com módulos nativos (`http` e `fs`) para servidores e rotas
+
+> ⚠️ O repositório está **em andamento**.
 
 ---
 
-## 📁 Estrutura do projeto
+## 📌 Visão geral
 
-\```
+| Área             | Conteúdo                                                                    |
+| ---------------- | --------------------------------------------------------------------------- |
+| **FrontEnd**     | páginas estáticas, exercícios em Canvas e jogos no navegador                |
+| **BackEnd**      | servidores HTTP com rotas, status codes, query string e leitura de arquivos |
+| **Status geral** | a maior parte dos exercícios está concluída                                 |
+
+---
+
+## 🗂 Estrutura da pasta
+
+```text
 DAPL_2k26_WEB/
 ├── FrontEnd/
-│ ├── ex1-pagina.html # Circuito de eletrônica
-│ ├── ex2-wikipedia.html # Página "estilo Wikipedia" (HTML puro, sem CSS)
-│ ├── img/ # Imagens usadas pelos exercícios acima
-│ ├── Canvas-pt1/ # 10 quadrados + 10 retas + 10 círculos animados
-│ ├── Canvas-pt2/ # 2 quadrados controláveis (play/pause + slider)
-│ │ ├── Jogo-Cobrinha/ # Jogo da Cobrinha (Snake)
-│ │ └── Chuva-Particulas/ # Chuva de partículas seguindo o mouse
-│ └── Desafio-Jogo-Canvas/ # "Arena Gravitacional" - jogo original (1 ou 2 players)
-│
-└── BackEnd/
-├── ex1-hello-world-server/ # Servidor Node básico ("Hello, World!")
-├── ex2-html-server/ # Servidor que entrega a página do Jogo Canvas
-├── ex3-http-server/ # Rotas demonstrando códigos HTTP 1xx-5xx + 404 customizado
-├── ex4-cardapio/ # Rotas /seg, /ter, /qua, /qui, /sex com cardápio do dia
-├── ex5-autenticacao/ # Rotas demonstrando a diferença entre 401 e 403
-└── ex6-mini-blog/ # Mini-blog servido via fs, com posts e imagens
-\```
+│   ├── pagina-circuito.html
+│   ├── wikipedia-etefmc.html
+│   ├── img/
+│   └── canvas/
+│       ├── parte-1/
+│       ├── parte-2/
+│       ├── jogo-cobrinha/
+│       ├── chuva-particulas/
+│       └── arena-gravitacional/
+├── BackEnd/
+│   ├── introducao-nodejs/
+│   │   ├── hello-world/
+│   │   └── html-server/
+│   ├── endpoints/
+│   │   ├── autenticacao/
+│   │   ├── cardapio/
+│   │   ├── http-status/
+│   │   └── mini-blog/
+│   └── requisicoes/
+│       ├── cor-pagina/
+│       ├── jogo-guess/
+│       └── query-basico/
+└── README.md
+```
 
 ---
 
 ## 🎨 FrontEnd
 
-| Pasta / Arquivo                | Descrição                                                                                                                                                                           |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ex1-pagina.html`              | Documentação de um circuito eletrônico ("Quem foi o primeiro?").                                                                                                                    |
-| `ex2-wikipedia.html`           | Página sobre a ETE FMC organizada no estilo de um artigo da Wikipedia, usando **apenas HTML nativo** (tabelas, `<center>`, âncoras) — sem nenhuma linha de CSS.                     |
-| `Canvas-pt1/`                  | 10 quadrados, 10 retas e 10 círculos animados, com posição, velocidade, cor e raio aleatórios a cada recarregamento da página. Todos colidem e quicam nas bordas do canvas.         |
-| `Canvas-pt2/`                  | Dois quadrados (um se move na horizontal, outro na vertical), com botão de pausar/retomar e um slider de velocidade.                                                                |
-| `Canvas-pt2/Jogo-Cobrinha/`    | Jogo da Cobrinha clássico em grade (grid), com crescimento real do corpo, pontuação e reinício automático da bolinha em posições aleatórias.                                        |
-| `Canvas-pt2/Chuva-Particulas/` | Efeito de partículas que "chovem" com gravidade a partir da posição do mouse, acompanhando seu movimento pela tela.                                                                 |
-| `Desafio-Jogo-Canvas/`         | **Arena Gravitacional** — jogo original feito em Canvas: cada jogador controla a gravidade do seu personagem para se esquivar de bombas. Suporta 1 ou 2 jogadores no mesmo teclado. |
+### 1) `pagina-circuito.html`
 
-Para testar qualquer exercício do FrontEnd, basta abrir o `index.html` (ou `.html` correspondente) direto no navegador — não precisa de servidor.
+Página explicativa sobre o circuito **“Quem foi o primeiro?”**, com lista de componentes, imagem do circuito e link de referência.
+
+### 2) `wikipedia-etefmc.html`
+
+Página no estilo de artigo da Wikipedia sobre a **ETE FMC**, construída com HTML puro e estrutura de tabela.
+
+### 3) Exercícios em Canvas
+
+| Pasta                         | Descrição                                                                             |
+| ----------------------------- | ------------------------------------------------------------------------------------- |
+| `canvas/parte-1/`             | animação com quadrados, retas e círculos com posições, velocidades e cores aleatórias |
+| `canvas/parte-2/`             | dois quadrados com botão de pausa/retomar e controle de velocidade                    |
+| `canvas/jogo-cobrinha/`       | jogo clássico da cobrinha com pontuação e reinício                                    |
+| `canvas/chuva-particulas/`    | efeito visual de partículas seguindo o mouse                                          |
+| `canvas/arena-gravitacional/` | jogo de arena com gravidade, bombas e modo 1 ou 2 jogadores                           |
 
 ---
 
 ## 🌐 BackEnd
 
-Todos os servidores usam **apenas os módulos nativos do Node.js** (`http` e `fs`), sem nenhuma dependência externa e sem o módulo `path` — não é necessário rodar `npm install`.
+Todos os exercícios usam os módulos nativos do Node.js e não dependem de bibliotecas externas.
 
-| Pasta                     | Porta  | Rota(s)                                                                              | Descrição                                                                                                                                     |
-| ------------------------- | ------ | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ex1-hello-world-server/` | `3001` | `/`                                                                                  | Servidor básico que responde "Hello, World!".                                                                                                 |
-| `ex2-html-server/`        | `3002` | `/`                                                                                  | Entrega a página HTML do Jogo Canvas (Arena Gravitacional).                                                                                   |
-| `ex3-http-server/`        | `3003` | `/`, `/informacoes`, `/contato`, `/redirecionamento`, `/adm`, `/manutencao`, `/jogo` | Demonstra um exemplo de cada categoria de status HTTP (1xx a 5xx) e uma página 404 personalizada para rotas inexistentes.                     |
-| `ex4-cardapio/`           | `3004` | `/seg` `/ter` `/qua` `/qui` `/sex`                                                   | Retorna o cardápio fictício de cada dia da semana (texto puro). Outras rotas → 404.                                                           |
-| `ex5-autenticacao/`       | `3005` | `/login` `/dashboard` `/admin`                                                       | Demonstra a diferença entre os códigos **401** (não autenticado) e **403** (autenticado, mas sem permissão).                                  |
-| `ex6-mini-blog/`          | `3006` | `/`, `/post1`, `/post2`, `/img/*`                                                    | Mini-blog de notícias com 2 posts e imagens, lido via `fs` a partir de arquivos `.html`. Rotas inválidas retornam uma página 404 customizada. |
+### `introducao-nodejs/hello-world`
+
+Servidor básico com resposta `Hello, World!`.
+
+**Porta:** `3001`
+
+### `introducao-nodejs/html-server`
+
+Servidor que entrega uma página HTML no navegador.
+
+**Porta:** `3002`
+
+### `endpoints/http-status`
+
+Servidor didático para demonstrar códigos HTTP `1xx`, `2xx`, `3xx`, `4xx` e `5xx`, além de uma página `404` personalizada.
+
+**Porta:** `3003`
+
+### `endpoints/cardapio`
+
+Servidor com rotas para cardápio de segunda a sexta.
+
+**Porta:** `3004`
+
+### `endpoints/autenticacao`
+
+Exercício sobre diferença entre `401 Unauthorized` e `403 Forbidden`.
+
+**Porta:** `3005`
+
+### `endpoints/mini-blog`
+
+Mini blog com menu, posts, imagens e página de erro `404`.
+
+**Porta:** `3006`
+
+### `requisicoes/query-basico`
+
+Servidor com query string para nome, idade e e-mail.
+
+**Porta:** `3007`
+
+### `requisicoes/cor-pagina`
+
+Servidor que altera a cor da página com base no parâmetro `cor=red|green|blue`.
+
+**Porta:** `3008`
+
+### `requisicoes/jogo-guess`
+
+Projeto ainda não finalizado.
 
 ---
 
-## 🛠 Tecnologias utilizadas
+## ▶️ Como executar
 
-- **HTML5** — estrutura das páginas e do canvas
-- **JavaScript** — lógica de animações, jogos e interatividade no navegador
-- **Node.js** (módulos `http` e `fs`) — servidores HTTP no back-end
+### FrontEnd
+
+Abra o arquivo `.html` desejado diretamente no navegador.
+
+### BackEnd
+
+Entre na pasta do exercício desejado e execute:
+
+```bash
+node app.js
+```
+
+Exemplo:
+
+```bash
+cd BackEnd/introducao-nodejs/hello-world
+node app.js
+```
+
+> Observação importante: vários servidores usam caminhos relativos com `fs.readFile()`.  
+> Por isso, o jeito mais seguro de executar é **sempre rodar o comando dentro da própria pasta do exercício**.
+
+---
+
+## 🧠 Observações do projeto
+
+- Os exercícios foram organizados como parte da trilha de aprendizado da disciplina.
+- O repositório mistura páginas estáticas, animações em Canvas e servidores HTTP simples.
 
 ---
 
 ## 👤 Autor
 
-Desenvolvido por **Iury Gonçalves de Souza** durante o curso técnico de Desenvolvimento de Aplicativos da [ETE FMC](https://www.etefmc.com.br/).
+Projeto acadêmico desenvolvido por **Iury Gonçalves de Souza** no curso técnico de **Desenvolvimento de Aplicativos** da **ETE FMC**.

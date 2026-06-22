@@ -1,7 +1,7 @@
 /*
-    Exercício: 
+Exercício: 
     
-    Servidor Node.js que contém o Jogo Canvas feito na parte de FrontEnd.
+    Desenvolva um servidor Node.js que contém o Jogo Canvas feito anteriormente na matéria de FrontEnd.
 */
 
 const http = require('http')
@@ -12,11 +12,11 @@ const server = http.createServer((req, res) => {
     fs.readFile('index.html', (err, data) => {
         if (err) {
             res.statusCode = 500
-            res.setHeader('Content-Type', 'text/plain')
+            res.setHeader('Content-Type', 'text/plain; charset=utf-8')
             res.end('Erro ao ler o arquivo index.html\n')
         } else {
             res.statusCode = 200
-            res.setHeader('Content-Type', 'text/html')
+            res.setHeader('Content-Type', 'text/plain; charset=utf-8')
             res.end(data)
         }
     })

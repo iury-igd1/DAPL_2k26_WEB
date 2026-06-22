@@ -1,26 +1,24 @@
 /*
-    Exercício:
+Exercício:
     
-    Servidor com os endpoints /seg, /ter, /qua, /qui e /sex, cada um retornando o cardápio de um dia 
-    da semana. Qualquer outra rota deve retornar 404 com a mensagem "Dia não encontrado".
+    Desenvolva um servidor Node.js com os endpoints /seg, /ter, /qua, /qui e /sex, cada um retornando o cardápio 
+    de um dia da semana. Qualquer outra rota deve retornar 404 com a mensagem "Dia não encontrado".
 */
 
 const http = require('http')
 
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
-        res.statusCode = 200 // 200 OK
+        res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
         res.end(`- CARDÁPIO SEMANAL -\n
-Página inicial
-
+Página inicial\n
 Rotas disponíveis:
 /seg -> Cardápio de segunda-feira
 /ter -> Cardápio de terça-feira
 /qua -> Cardápio de quarta-feira
 /qui -> Cardápio de quinta-feira
-/sex -> Cardápio de sexta-feira
-
+/sex -> Cardápio de sexta-feira\n
 Digite uma dessas rotas na URL para visualizar o cardápio do dia desejado.
 Exemplo: http://localhost:3004/seg`)
     } else if (req.url === '/seg') {
@@ -59,10 +57,9 @@ Prato Principal: Hambúrguer de Picanha
 Acompanhamentos: Batata Frita e Onion Rings
 Sobremesa: Milkshake de Creme`)
     } else {
-        // Qualquer outra rota cai aqui
         res.statusCode = 404
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end(`- ERRO 404 -\n\n
+        res.end(`- ERRO 404 -\n
 Dia não encontrado.\n
 Rotas válidas:
 /seg\n/ter\n/qua\n/qui\n/sex`)

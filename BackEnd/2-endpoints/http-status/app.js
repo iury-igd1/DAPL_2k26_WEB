@@ -1,8 +1,8 @@
 /*
-    Exercício:
+Exercício:
     
-    Servidor com rotas que demonstram um exemplo de cada categoria de código de status HTTP 
-    (1xx, 2xx, 3xx, 4xx e 5xx), além de uma página HTML personalizada para o erro 404.
+    Desenvolva um servidor Node.js com diferentes rotas que demonstram um exemplo de cada categoria de código 
+    de status HTTP (1xx, 2xx, 3xx, 4xx e 5xx), além de uma página HTML personalizada para o erro 404.
 
     Resumo das rotas e do que cada uma demonstra:
     /                  -> 200 (2xx) Página inicial, tudo certo
