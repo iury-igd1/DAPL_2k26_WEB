@@ -14,7 +14,6 @@ const server = http.createServer((req, res) => {
         res.end(`Página principal.
             
             Use a URL para redirecionar para o dia da semana que você deseja.`)
-        return
     } else if (req.url === '/seg') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
@@ -24,7 +23,6 @@ const server = http.createServer((req, res) => {
             Acompanhamentos: Arroz e Batata Frita
             Sobremesa: Mousse de Maracujá
             `)
-        return
     } else if (req.url === '/ter') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
@@ -34,7 +32,6 @@ const server = http.createServer((req, res) => {
             Acompanhamentos: Arroz, Feijão e Salada
             Sobremesa: Palha Italiana
             `)
-        return
     } else if (req.url === '/qua') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
@@ -44,7 +41,6 @@ const server = http.createServer((req, res) => {
             Acompanhamentos: Couve, Farofa e Laranja
             Sobremesa: Pudim de Leite
             `)
-        return
     } else if (req.url === '/qui') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
@@ -54,7 +50,6 @@ const server = http.createServer((req, res) => {
             Acompanhamentos: Arroz e Salada
             Sobremesa: Brownie de Chocolate
             `)
-        return
     } else if (req.url === '/sex') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
@@ -64,13 +59,11 @@ const server = http.createServer((req, res) => {
             Acompanhamentos: Batata Frita e Onion Rings
             Sobremesa: Milkshake de Creme
             `)
-        return
     } else {
         // Qualquer outra rota cai aqui
         res.statusCode = 404
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
         res.end('Dia não encontrado.\n')
-        return
     }
 })
 

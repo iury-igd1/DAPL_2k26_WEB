@@ -99,11 +99,21 @@ function moverReta(r) {
     r.x += r.dx
     r.y += r.dy
 
-    if (r.x <= 0 || r.x >= canvas.width) {
+    var x2 = r.x + Math.cos(r.angulo) * TAMANHO_RETA
+    var y2 = r.y + Math.sin(r.angulo) * TAMANHO_RETA
+
+    var menorX = Math.min(r.x, x2)
+    var maiorX = Math.max(r.x, x2)
+    var menorY = Math.min(r.y, y2)
+    var maiorY = Math.max(r.y, y2)
+
+    if (menorX <= 0 || maiorX >= canvas.width) {
         r.dx = -r.dx
+        r.x += r.dx
     }
-    if (r.y <= 0 || r.y >= canvas.height) {
+    if (menorY <= 0 || maiorY >= canvas.height) {
         r.dy = -r.dy
+        r.y += r.dy
     }
 }
 

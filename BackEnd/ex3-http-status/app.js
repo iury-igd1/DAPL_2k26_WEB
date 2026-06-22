@@ -38,8 +38,9 @@ const server = http.createServer((req, res) => {
         return
     } else if (req.url === '/redirecionamento') {
         res.statusCode = 302 // 302 Found
+        res.setHeader('Location', '/jogo')
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('URL alterado.\n')
+        res.end('Redirecionando para /jogo...\n')
         return
     } else if (req.url === '/adm') {
         res.statusCode = 403 // 403 Forbidden

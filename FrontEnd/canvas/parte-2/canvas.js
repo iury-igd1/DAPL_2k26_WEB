@@ -48,8 +48,10 @@ function animate() {
 
     x1 += passo * sentidoX1
     if (x1 + 100 >= canvas.width) {
+        x1 = canvas.width - 100
         sentidoX1 = -1
     } else if (x1 <= 0) {
+        x1 = 0
         sentidoX1 = 1
     }
 
@@ -61,8 +63,10 @@ function animate() {
 
     y1 += passo * sentidoY2
     if (y1 + 100 >= canvas.height) {
+        y1 = canvas.height - 100
         sentidoY2 = -1
     } else if (y1 <= 0) {
+        y1 = 0
         sentidoY2 = 1
     }
 }
