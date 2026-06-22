@@ -9,61 +9,63 @@ const http = require('http')
 
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
-        res.statusCode = 200
+        res.statusCode = 200 // 200 OK
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end(`Página principal.
-            
-            Use a URL para redirecionar para o dia da semana que você deseja.`)
+        res.end(`- CARDÁPIO SEMANAL -\n
+Página inicial
+
+Rotas disponíveis:
+/seg -> Cardápio de segunda-feira
+/ter -> Cardápio de terça-feira
+/qua -> Cardápio de quarta-feira
+/qui -> Cardápio de quinta-feira
+/sex -> Cardápio de sexta-feira
+
+Digite uma dessas rotas na URL para visualizar o cardápio do dia desejado.
+Exemplo: http://localhost:3004/seg`)
     } else if (req.url === '/seg') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end(`CARDÁPIO DE SEGUNDA
-            
-            Prato Principal: Strogonoff de Frango
-            Acompanhamentos: Arroz e Batata Frita
-            Sobremesa: Mousse de Maracujá
-            `)
+        res.end(`- CARDÁPIO DE SEGUNDA-FEIRA -\n\n
+Prato Principal: Strogonoff de Frango
+Acompanhamentos: Arroz e Batata Frita
+Sobremesa: Mousse de Maracujá`)
     } else if (req.url === '/ter') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end(`CARDÁPIO DE TERÇA
-            
-            Prato Principal: Filé de Frango Grelhado
-            Acompanhamentos: Arroz, Feijão e Salada
-            Sobremesa: Palha Italiana
-            `)
+        res.end(`- CARDÁPIO DE TERÇA-FEIRA -\n\n
+Prato Principal: Filé de Frango Grelhado
+Acompanhamentos: Arroz, Feijão e Salada
+Sobremesa: Palha Italiana`)
     } else if (req.url === '/qua') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end(`CARDÁPIO DE QUARTA
-            
-            Prato Principal: Feijoada
-            Acompanhamentos: Couve, Farofa e Laranja
-            Sobremesa: Pudim de Leite
-            `)
+        res.end(`- CARDÁPIO DE QUARTA-FEIRA -\n\n
+Prato Principal: Feijoada
+Acompanhamentos: Couve, Farofa e Laranja
+Sobremesa: Pudim de Leite`)
     } else if (req.url === '/qui') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end(`CARDÁPIO DE QUINTA
-            
-            Prato Principal: Lasanha
-            Acompanhamentos: Arroz e Salada
-            Sobremesa: Brownie de Chocolate
-            `)
+        res.end(`- CARDÁPIO DE QUINTA-FEIRA -\n\n
+Prato Principal: Lasanha
+Acompanhamentos: Arroz e Salada
+Sobremesa: Brownie de Chocolate`)
     } else if (req.url === '/sex') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end(`CARDÁPIO DE SEXTA
-            
-            Prato Principal: Hambúrguer de Picanha
-            Acompanhamentos: Batata Frita e Onion Rings
-            Sobremesa: Milkshake de Creme
-            `)
+        res.end(`- CARDÁPIO DE SEXTA-FEIRA -\n\n
+Prato Principal: Hambúrguer de Picanha
+Acompanhamentos: Batata Frita e Onion Rings
+Sobremesa: Milkshake de Creme`)
     } else {
         // Qualquer outra rota cai aqui
         res.statusCode = 404
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Dia não encontrado.\n')
+        res.end(`- ERRO 404 -\n\n
+Dia não encontrado.\n
+Rotas válidas:
+/seg\n/ter\n/qua\n/qui\n/sex`)
     }
 })
 

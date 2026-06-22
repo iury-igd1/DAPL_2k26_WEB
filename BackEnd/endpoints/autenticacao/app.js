@@ -17,28 +17,52 @@ const server = http.createServer((req, res) => {
     if (req.url === '/') {
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end(`Página principal.
-            Use a URL para redirecionar para o que você deseja.
-            `)
+        res.end(`- SERVIDOR DE AUTENTICAÇÃO E PERMISSÃO -
+
+Página inicial
+
+Rotas disponíveis:
+/login      -> Simula um login bem-sucedido
+/dashboard  -> Retorna 401 (usuário não autenticado)
+/admin      -> Retorna 403 (usuário sem permissão)
+
+Digite uma dessas rotas na URL para testar cada situação.
+Exemplo: http://localhost:3005/login`)
     } else if (req.url === '/login') {
         // 200 OK: Simula um login que deu certo
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Login realizado com sucesso!\n')
+        res.end(`- LOGIN -
+
+Login realizado com sucesso!
+O usuário foi autenticado corretamente.`)
     } else if (req.url === '/dashboard') {
-        // 401 Unauthorized: Ninguém fez login ainda, o servidor não sabe quem está pedindo essa página
+        // 401 Unauthorized: O usuário não está autenticado e precisa fazer login
         res.statusCode = 401
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Acesso negado. Faça login primeiro.\n')
+        res.end(`- DASHBOARD -
+
+Acesso negado.
+Você precisa estar autenticado para acessar esta página.`)
     } else if (req.url === '/admin') {
         // 403 Forbidden: Mesmo que o usuário estivesse logado, essa área exige um nível de permissão que ele não tem
         res.statusCode = 403
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Você não tem permissão para acessar esta área.\n')
+        res.end(`- ÁREA ADMINISTRATIVA -
+
+Você não tem permissão para acessar esta área.
+Mesmo estando autenticado, seu usuário não possui acesso de administrador.`)
     } else {
         res.statusCode = 404
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Página não encontrada.\n')
+        res.end(`- ERRO 404 -
+
+Página não encontrada.
+
+Rotas válidas:
+/login
+/dashboard
+/admin`)
     }
 })
 
