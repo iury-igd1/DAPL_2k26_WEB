@@ -20,30 +20,25 @@ const server = http.createServer((req, res) => {
         res.end(`Página principal.
             Use a URL para redirecionar para o que você deseja.
             `)
-        return
     } else if (req.url === '/login') {
         // 200 OK: Simula um login que deu certo
         res.statusCode = 200
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
         res.end('Login realizado com sucesso!\n')
-        return
     } else if (req.url === '/dashboard') {
         // 401 Unauthorized: Ninguém fez login ainda, o servidor não sabe quem está pedindo essa página
         res.statusCode = 401
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
         res.end('Acesso negado. Faça login primeiro.\n')
-        return
     } else if (req.url === '/admin') {
         // 403 Forbidden: Mesmo que o usuário estivesse logado, essa área exige um nível de permissão que ele não tem
         res.statusCode = 403
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
         res.end('Você não tem permissão para acessar esta área.\n')
-        return
     } else {
         res.statusCode = 404
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
         res.end('Página não encontrada.\n')
-        return
     }
 })
 

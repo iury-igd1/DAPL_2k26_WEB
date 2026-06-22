@@ -26,7 +26,6 @@ function enviarHtml(res, nomeArquivo) {
             res.statusCode = 500
             res.setHeader('Content-Type', 'text/plain; charset=utf-8')
             res.end(`Falha interna. Erro ao ler o arquivo '${nomeArquivo}'.\n`)
-            return
         }
 
         res.statusCode = 200
@@ -41,7 +40,6 @@ function enviar404(res) {
             res.statusCode = 500
             res.setHeader('Content-Type', 'text/plain; charset=utf-8')
             res.end("Falha interna. Erro ao ler o arquivo '404.html'.\n")
-            return
         }
         res.statusCode = 404
         res.setHeader('Content-Type', 'text/html; charset=utf-8')
@@ -57,13 +55,11 @@ function enviarImagem(res, urlPedida) {
 
     if (!tipo) {
         enviar404(res)
-        return
     }
 
     fs.readFile(caminho, (err, data) => {
         if (err) {
             enviar404(res)
-            return
         }
 
         res.statusCode = 200

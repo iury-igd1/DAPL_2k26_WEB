@@ -20,48 +20,60 @@ const fs = require('fs')
 
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
-        res.statusCode = 200
+        res.statusCode = 200 // 200 OK
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Página principal.\n')
-        return
+        res.end(`- Servidor de demonstração de códigos HTTP -\n
+Página inicial\n\n
+Rotas disponíveis:\n
+/                  -> 200 (OK) Página inicial com lista de rotas\n
+/informacoes       -> 102 (Processing) Resposta informativa\n
+/contato           -> 200 (OK) Página de contato\n
+/redirecionamento  -> 302 (Found) Redireciona para /jogo\n
+/adm               -> 403 (Forbidden) Acesso proibido\n
+/manutencao        -> 503 (Service Unavailable) Serviço indisponível\n
+/jogo              -> 200 (OK) Abre a página do jogo\n\n
+Qualquer outra rota -> 404 (Not Found)\n`)
     } else if (req.url === '/informacoes') {
         res.statusCode = 102 // 102 Processing
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end(
-            'O servidor recebeu e está processando a requisição, mas nenhuma resposta está disponível ainda...\nPor favor, aguarde.',
-        )
-        return
+        res.end(`- Página de informações -\n
+Código HTTP atual: 102 (Processing)\n\n
+O servidor recebeu a requisição e ainda está processando a resposta.\n`)
     } else if (req.url === '/contato') {
         res.statusCode = 200 // 200 OK
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Página de contatos.\n')
-        return
+        res.end(`- Página de contato -\n
+Código HTTP atual: 200 (OK)\n\n
+Tudo ocorreu corretamente nesta rota.\n`)
     } else if (req.url === '/redirecionamento') {
         res.statusCode = 302 // 302 Found
         res.setHeader('Location', '/jogo')
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Redirecionando para /jogo...\n')
-        return
+        res.end(`Código HTTP atual: 302 (Found)\n\n
+Redirecionando para /jogo...\n`)
     } else if (req.url === '/adm') {
         res.statusCode = 403 // 403 Forbidden
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Acesso restrito. Você não deveria estar vendo isso...\n')
-        return
+        res.end(`- Área administrativa -\n
+Código HTTP atual: 403 (Forbidden)\n\n
+Você não tem permissão para acessar esta página.\n`)
     } else if (req.url === '/manutencao') {
         res.statusCode = 503 // 503 Service Unavailable
         res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-        res.end('Serviço temporariamente indisponível. Voltamos já!\n')
-        return
+        res.end(`- Página de manutenção -\n
+Código HTTP atual: 503 (Service Unavailable)\n\n
+O servidor está temporariamente indisponível.\n`)
     } else if (req.url === '/jogo') {
         fs.readFile('jogo.html', (err, data) => {
             if (err) {
                 res.statusCode = 500 // 500 Internal Server Error
                 res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-                res.end("Falha interna. Erro ao ler o arquivo 'jogo.html'.\n")
-                return
+                res.end(
+                    "Falha interna.\nCódigo HTTP atual: 500 (Internal Server Error)\n\nErro ao ler o arquivo 'jogo.html'.\n",
+                )
             } else {
                 res.statusCode = 200
-                res.setHeader('Content-Type', 'text/html')
+                res.setHeader('Content-Type', 'text/html; charset=utf-8')
                 res.end(data)
             }
         })
@@ -70,11 +82,12 @@ const server = http.createServer((req, res) => {
             if (err) {
                 res.statusCode = 500 // 500 Internal Server Error
                 res.setHeader('Content-Type', 'text/plain; charset=utf-8')
-                res.end("Falha interna. Erro ao ler o arquivo '404.html'.\n")
-                return
+                res.end(
+                    "Falha interna.\nCódigo HTTP atual: 500 (Internal Server Error)\n\nErro ao ler o arquivo '404.html'.\n",
+                )
             } else {
                 res.statusCode = 404
-                res.setHeader('Content-Type', 'text/html')
+                res.setHeader('Content-Type', 'text/html; charset=utf-8')
                 res.end(data)
             }
         })
