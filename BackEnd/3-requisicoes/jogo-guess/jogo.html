@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jogo de Adivinhação</title>
+        <style>
+            body {
+                margin: 0;
+                background-color: rgb(38, 38, 214);
+                color: white;
+                font-family: Arial, sans-serif;
+            }
+        </style>
+    </head>
+
+    <body>
+        <table width="800" align="center">
+            <tr>
+                <td>
+                    <header>
+                        <h1 align="center">Jogo de adivinhação - Guess</h1>
+                        <hr />
+                    </header>
+
+                    <div align="center">
+                        <h2>Tente adivinhar o número secreto!</h2>
+                        <p>Você tem 5 tentativas para tentar adivinhar um número entre <b>0 e 100</b>.</p>
+
+                        <h3 style="color: yellow">{{MENSAGEM}}</h3>
+
+                        <form action="/guess" method="GET">
+                            <label for="palpite"><b>Seu palpite:</b></label>
+                            <input
+                                type="number"
+                                id="palpite"
+                                name="palpite"
+                                min="0"
+                                max="100"
+                                required
+                                autofocus
+                            />
+                            <button type="submit">Enviar</button>
+                        </form>
+                    </div>
+                    <br />
+                    <hr />
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
